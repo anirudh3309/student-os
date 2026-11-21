@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+
+    <title>Student OS | Your Student Workspace</title>
+    <meta name="description" content="Student OS is your personal workspace to manage tasks, study sessions and productivity.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a href="#" class="brand">
+            <span class="brand-icon">S</span>
+            <span>STUDENT<span class="brand-light">OS</span></span>
+        </a>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-link active">
+                <span>◫</span> Dashboard
+            </a>
+            <a href="#tasks" class="nav-link">
+                <span>☑</span> My Tasks
+            </a>
+            <a href="#planner" class="nav-link">
+                <span>▦</span> Study Planner
+            </a>
+            <a href="#notes" class="nav-link">
+                <span>▤</span> Notes
+            </a>
+        </nav>
+
+        <div class="sidebar-label tools-label">PRODUCTIVITY</div>
+
+        <nav class="navigation">
+            <a href="#focus" class="nav-link">
+                <span>◷</span> Focus Timer
+            </a>
+            <a href="#calculator" class="nav-link">
+                <span>⌗</span> Calculator
+            </a>
+            <a href="#analytics" class="nav-link">
+                <span>▥</span> Analytics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile-avatar">A</div>
+            <div class="profile-info">
+                <strong>Student Workspace</strong>
+                <span>Personal account</span>
+            </div>
+            <span class="online-dot"></span>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+            <div>
+                <div class="breadcrumb">WORKSPACE / DASHBOARD</div>
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="topbar-actions">
+                <span class="status-indicator">● All systems ready</span>
+                <button class="theme-button" id="themeToggle" aria-label="Toggle theme">◐</button>
+            </div>
+        </header>
+
+        <!-- WELCOME -->
+        <section class="welcome-card">
+            <div class="welcome-content">
+                <span class="eyebrow">YOUR PERSONAL WORKSPACE</span>
+                <h2>Make today <span>count.</span></h2>
+                <p>Plan smarter, stay focused and make progress every day.</p>
+                <a href="#tasks" class="primary-button">Get started <span>→</span></a>
+            </div>
+            <div class="welcome-decoration">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit-center">S</div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats-grid">
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Tasks completed</span>
+                    <span class="stat-icon purple">✓</span>
+                </div>
+                <h3 id="completedCount">0</h3>
+                <p>Your completed tasks</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Pending tasks</span>
+                    <span class="stat-icon blue">◷</span>
+                </div>
+                <h3 id="pendingCount">0</h3>
+                <p>Tasks left to finish</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Study sessions</span>
+                    <span class="stat-icon orange">✦</span>
+                </div>
+                <h3 id="sessionCount">0</h3>
+                <p>Focus sessions completed</p>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-top">
+                    <span>Productivity</span>
+                    <span class="stat-icon green">↗</span>
+                </div>
+                <h3 id="productivityValue">0%</h3>
+                <p>Task completion rate</p>
+            </article>
+        </section>
+
+        <!-- DASHBOARD GRID -->
+        <section class="dashboard-grid">
+
+            <!-- TASKS -->
+            <article class="panel tasks-panel" id="tasks">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-eyebrow">STAY ORGANIZED</span>
+                        <h2>My Tasks</h2>
+                    </div>
+                    <button class="small-button" id="addTaskButton">+ Add task</button>
+                </div>
+
+                <form id="taskForm" class="task-form">
+                    <input type="text" id="taskInput" placeholder="What do you need to do?" maxlength="100" required>
+                    <button type="submit">Add</button>
+                </form>
+
+                <div class="task-list" id="taskList">
+                    <div class="empty-state">
+                        <span>✦</span>
+                        <p>No tasks yet. Add your first task!</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- STUDY PROGRESS -->
+            <article class="panel progress-panel" id="analytics">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-eyebrow">YOUR PERFORMANCE</span>
+                        <h2>Study Progress</h2>
+                    </div>
+                    <span class="live-tag">LIVE</span>
+                </div>
+
+                <div class="progress-circle" id="progressCircle">
+                    <div class="progress-inner">
+                        <strong id="progressPercentage">0%</strong>
+                        <span>Completed</span>
+                    </div>
+                </div>
+
+                <p class="progress-caption">Complete your tasks to improve your progress.</p>
+
+                <div class="progress-details">
+                    <div><span class="legend-dot purple-dot"></span> Completed <strong id="progressDone">0</strong></div>
+                    <div><span class="legend-dot blue-dot"></span> Remaining <strong id="progressLeft">0</strong></div>
+                </div>
+            </article>
+
+            <!-- FOCUS TIMER -->
+            <article class="panel focus-panel" id="focus">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-eyebrow">DEEP WORK MODE</span>
+                        <h2>Focus Timer</h2>
+                    </div>
+                    <span class="timer-icon">◷</span>
+                </div>
+
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <p class="timer-caption">Stay focused. One task at a time.</p>
+
+                <div class="timer-controls">
+                    <button id="startTimer" class="primary-button">Start</button>
+                    <button id="resetTimer" class="secondary-button">Reset</button>
+                </div>
+            </article>
+
+            <!-- QUICK NOTES -->
+            <article class="panel notes-panel" id="notes">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-eyebrow">YOUR IDEAS</span>
+                        <h2>Quick Notes</h2>
+                    </div>
+                    <span class="notes-icon">▤</span>
+                </div>
+
+                <textarea id="notesInput" placeholder="Write down your ideas, reminders or important notes..."></textarea>
+                <div class="notes-footer">
+                    <span id="notesStatus">Saved locally</span>
+                    <button id="clearNotes">Clear notes</button>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- PLANNER -->
+        <section class="panel planner-panel" id="planner">
+            <div class="panel-header">
+                <div>
+                    <span class="panel-eyebrow">PLAN YOUR SUCCESS</span>
+                    <h2>Study Planner</h2>
+                </div>
+                <span class="planner-icon">▦</span>
+            </div>
+            <p>Build a consistent study routine and keep your goals in sight.</p>
+            <div class="planner-placeholder">
+                <span>✦</span>
+                <div>
+                    <strong>Your next chapter starts here.</strong>
+                    <p>Study planner tools are coming in the next update.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span>STUDENT OS © 2026</span>
+            <span>Designed for focus. Built for growth.</span>
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>
